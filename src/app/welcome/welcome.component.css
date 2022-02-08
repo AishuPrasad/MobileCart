@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Supermercado+One&display=swap');
+
+.shadow {
+	text-shadow: 3px 3px 2px rgba(150, 150, 150, 1);
+}
+
+.logo-styles{
+	width: 50px; 
+	font-size: 50px; 
+	color: #ff0080
+}
+
+.flex-class{
+    display: flex;
+    justify-content: center;
+}
+
+.title-styles{
+	text-align: center; 
+	color: #ff0080; 
+	font-size: 40px;
+    font-family: 'Supermercado One';
+}
+.cart{
+    width: 30px;
+}
+.text-styles{
+	color:#337ab7;
+	font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container-styles{
+	position: relative; 
+	top: 180px;
+	width:50%
+}
+.panel-primary{
+    border-color: #337ab7 !important;
+}
+.panel{
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
+}
+.pclass1{
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+
+.pclass2{
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+*{
+    box-sizing: border-box;
+}
+div{
+    display: block;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}

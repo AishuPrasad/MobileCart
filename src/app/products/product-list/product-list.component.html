@@ -1,0 +1,144 @@
+<nav class='navbar navbar-default navbar-fixed-top navbarpos'>
+	<div class='container-fluid navpad
+    '>
+		<a class='navbar-brand txtcolor'>myMobileCart  <div class="cart">
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart" role="img"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+              class="svg-inline--fa fa-shopping-cart fa-w-18 fa-3x">
+              <path fill="currentColor"
+                d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z"
+                class=""></path>
+            </svg>
+        </div> </a>
+		<div >
+			<input type="text" class="form-control" placeholder="Search" name="q" [(ngModel)]="listFilter" (change)="searchtext()">
+			<div class="input-group-btn">
+				<button class="btn btn-default">
+					<em class="glyphicon glyphicon-search"></em>
+				</button>
+			</div>
+		</div>
+
+		<!-- Displays the selected Items in the cart along with price -->
+		<div class="pull-right txtcolor cartpos">
+			<span class="glyphicon glyphicon-shopping-cart"></span> <a
+				[routerLink]="['cart']" class="txtcolor">{{selectedItems}}&nbsp;items</a>
+			<span>, {{total | currency:'USD':'symbol':'1.2-2'}} </span>
+		</div>
+	</div>
+</nav>
+<br><br>
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img  src="assets/imgs/carousel_smart_phone.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="assets/imgs/carousel1.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img  src="assets/imgs/tablet_blue_stylus.jpg" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+<div class="pad" *ngIf='products && products.length'>
+    <div class="row " *ngFor='let product of products | orderBy:sortoption ; let i = index' [hidden]="(i%4)>0">
+        
+        <span class="thumbnail text-center">
+          <div>
+            <img [src]='product.imageUrl' [title]='product.productName' [style.width.px]='imageWidth'
+              [style.height.px]='imageHeight' [style.margin.px]='imageMargin' alt='Product Image'>
+          </div>
+          <div class="caption">
+            <div>
+              <a [routerLink]="[product.productId]">
+                {{product.productName}} </a>
+            </div>
+            <div>{{ product.price | currency:'USD':'symbol':'1.2-2'}}</div>
+            <div></div>
+            <app-rating class="ratingcolor" [rate]='product.rating'></app-rating>
+            <div>
+              <button (click)="addCart(product.productId)" class="btn btn-primary">Add to Cart</button>
+            </div>
+          </div>
+        </span>
+      </div>
+      <div class="col-xs-3">
+        <div *ngIf="products[i+1]" class="thumbnail text-center">
+          <div>
+            <img [src]='products[i+1].imageUrl' [title]='products[i+1].productName'
+              [style.width.px]='imageWidth' [style.height.px]='imageHeight' [style.margin.px]='imageMargin'>
+          </div>
+          <div class="caption">
+            <div>
+              <a [routerLink]="[products[i+1].productId]">
+                {{products[i+1].productName}} </a>
+            </div>
+            <div>{{ products[i+1].price | currency:'USD':'symbol':'1.2-2'}}
+            </div>
+            <div></div>
+            <app-rating class="ratingcolor" [rate]='products[i+1].rating'></app-rating>
+            <div></div>
+            <div>
+              <button (click)="addCart(products[i+1].productId)" class="btn btn-primary">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div *ngIf="products[i+2]" class="thumbnail text-center">
+          <div>
+            <img [src]='products[i+2].imageUrl' [title]='products[i+2].productName'
+              [style.width.px]='imageWidth' [style.height.px]='imageHeight' [style.margin.px]='imageMargin'
+              alt='Product'>
+          </div>
+          <div class="caption">
+            <div>
+              <a [routerLink]="[products[i+2].productId]">
+                {{products[i+2].productName}} </a>
+            </div>
+            <div>{{ products[i+2].price | currency:'USD':'symbol':'1.2-2'}}
+            </div>
+            <div></div>
+            <app-rating class="ratingcolor" [rate]='products[i+2].rating'></app-rating>
+            <div></div>
+            <div>
+              <button (click)="addCart(products[i+2].productId)" class="btn btn-primary">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div *ngIf="products[i+3]" class="thumbnail text-center">
+          <div>
+            <img [src]='products[i+3].imageUrl' [title]='products[i+3].productName'
+              [style.width.px]='imageWidth' [style.height.px]='imageHeight' [style.margin.px]='imageMargin'>
+          </div>
+          <div class="caption">
+            <div>
+              <a [routerLink]="[products[i+3].productId]">
+                {{products[i+3].productName}} </a>
+            </div>
+
+            <div>{{ products[i+3].price | currency:'USD':'symbol':'1.2-2'}}
+            </div>
+            <div></div>
+            <app-rating class="ratingcolor" [rate]='products[i+3].rating'></app-rating>
+            <div></div>
+            <div>
+              <button (click)="addCart(products[i+3].productId)" class="btn btn-primary">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
